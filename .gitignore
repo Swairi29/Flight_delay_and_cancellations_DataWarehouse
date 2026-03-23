@@ -1,0 +1,4 @@
+.venv/
+flights_sample_3m.csv
+__pycache__/
+*.log

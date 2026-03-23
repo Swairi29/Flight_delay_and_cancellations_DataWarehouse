@@ -1,0 +1,32 @@
+[
+    {
+        "STATUS_CODE": "S1",
+        "IS_CANCELLED": 0,
+        "IS_DIVERTED": 0,
+        "DELAY_CATEGORY": "On-Time"
+    },
+    {
+        "STATUS_CODE": "S2",
+        "IS_CANCELLED": 0,
+        "IS_DIVERTED": 0,
+        "DELAY_CATEGORY": "Minor Delay"
+    },
+    {
+        "STATUS_CODE": "S3",
+        "IS_CANCELLED": 0,
+        "IS_DIVERTED": 0,
+        "DELAY_CATEGORY": "Severe Delay"
+    },
+    {
+        "STATUS_CODE": "S4",
+        "IS_CANCELLED": 1,
+        "IS_DIVERTED": 0,
+        "DELAY_CATEGORY": "Cancelled"
+    },
+    {
+        "STATUS_CODE": "S5",
+        "IS_CANCELLED": 0,
+        "IS_DIVERTED": 1,
+        "DELAY_CATEGORY": "Diverted"
+    }
+]
