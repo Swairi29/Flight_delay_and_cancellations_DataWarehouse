@@ -16,3 +16,49 @@ All database-related scripts are available in the /sql folder.
 - Analytical queries for reporting
 
 These were developed using SQL Server Management Studio (SSMS).
+
+Solution Architecture
+Overview
+
+A simple Data Warehouse & BI architecture is used to process and analyze flight delay and cancellation data.
+
+Components
+Data Sources
+CSV, JSON, and Excel files containing flight, airline, and airport data.
+ETL Process
+Python scripts are used to clean, transform, and prepare the data.
+Data Warehouse (SQL Server)
+Stores structured data using fact and dimension tables.
+Analytics Layer
+SQL queries are used to generate insights such as delays and cancellations.
+
+Data Warehouse Design
+Dimensional Model
+
+A Star Schema is used.
+
+Fact Table
+Fact_Flights
+Stores measurable data such as delay time and cancellation status.
+
+Dimension Tables
+Dim_Airline
+Dim_Airport
+Dim_Date
+Dim_Flight_Status
+Dim_Time
+Dim_Flight_Data
+Dim_Route
+
+Slowly Changing Dimension (SCD)
+Implemented in Dim_Airline
+Used to track changes in airline details over time.
+
+
+Design Assumptions
+Each flight record is treated as a unique event
+Airlines and airports provide descriptive details
+Date dimension is used for time-based analysis
+Historical data changes are preserved using SCD
+
+
