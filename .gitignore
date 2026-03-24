@@ -2,3 +2,13 @@
 flights_sample_3m.csv
 __pycache__/
 *.log
+
+# Ignore Visual Studio temporary files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore SSMS temporary files
+*.sqlproj.user

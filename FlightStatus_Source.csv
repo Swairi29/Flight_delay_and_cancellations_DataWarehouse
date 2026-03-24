@@ -1,0 +1,6 @@
+STATUS_CODE,IS_CANCELLED,IS_DIVERTED,DELAY_CATEGORY
+S1,0,0,On-Time
+S2,0,0,Minor Delay
+S3,0,0,Severe Delay
+S4,1,0,Cancelled
+S5,0,1,Diverted

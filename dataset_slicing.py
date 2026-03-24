@@ -66,4 +66,11 @@ scoped_df['STATUS_CODE'] = np.select(conditions, choices, default='S1')
 flights_df = scoped_df.drop(columns=['AIRLINE', 'AIRLINE_DOT', 'DOT_CODE', 'ORIGIN_CITY', 'DEST_CITY'])
 flights_df.to_csv('FlightData_Source.csv', index=False)
 
+
+
+print("Exporting Routes to CSV...")
+routes_df = scoped_df[['ORIGIN', 'DEST']].drop_duplicates()
+routes_df['ROUTE_CODE'] = routes_df['ORIGIN'] + '-' + routes_df['DEST']
+routes_df.to_csv('Routes_Source.csv', index=False)
+
 print("Data prep complete!.")
