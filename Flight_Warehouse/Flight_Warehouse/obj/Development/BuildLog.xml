@@ -2,13 +2,23 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>Flight_Warehouse</Name>
-    <LastWriteTime>2026-03-24T08:35:31.5639275Z</LastWriteTime>
+    <LastWriteTime>2026-03-25T00:21:27.1338288Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Load_Stagging.dtsx</Name>
-      <LastWriteTime>2026-03-24T08:35:31.4192453Z</LastWriteTime>
+      <LastWriteTime>2026-03-24T09:17:53.7853802Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load_DW.dtsx</Name>
+      <LastWriteTime>2026-03-25T00:31:16.1048754Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Update_Accumulating_Fact.dtsx</Name>
+      <LastWriteTime>2026-03-25T00:21:26.9816273Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
