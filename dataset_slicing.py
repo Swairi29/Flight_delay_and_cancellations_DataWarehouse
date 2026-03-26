@@ -6,9 +6,11 @@ import numpy as np
 print("Loading data...")
 df = pd.read_csv('flights_sample_3m.csv')
 
-# 2. Define our Business Scope (Slicing)
+# 2. Define our Business Scope (Option 2: Expanded Hubs)
 target_airlines = ['Delta Air Lines Inc.', 'American Airlines Inc.', 'United Air Lines Inc.']
-target_airports = ['JFK', 'LAX', 'ORD', 'DFW', 'ATL']
+
+# Expanded from 5 to 10 major US transit hubs to enrich the Route Dimension
+target_airports = ['JFK', 'LAX', 'ORD', 'DFW', 'ATL', 'SFO', 'DEN', 'LAS', 'SEA', 'MCO']
 
 print("Slicing data...")
 scoped_df = df[

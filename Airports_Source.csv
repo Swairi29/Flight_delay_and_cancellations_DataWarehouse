@@ -1,6 +1,11 @@
 AIRPORT_CODE,CITY
 DFW,"Dallas/Fort Worth, TX"
+SFO,"San Francisco, CA"
 LAX,"Los Angeles, CA"
 ORD,"Chicago, IL"
+DEN,"Denver, CO"
 ATL,"Atlanta, GA"
 JFK,"New York, NY"
+MCO,"Orlando, FL"
+LAS,"Las Vegas, NV"
+SEA,"Seattle, WA"

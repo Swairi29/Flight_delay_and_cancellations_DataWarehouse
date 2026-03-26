@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load_DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{2CEC0339-4441-46B7-989F-F976F162F400}">
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{77EF9F84-349B-44CF-84D2-73040E5381B9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4491,7 +4491,7 @@ where [refTable].[Cancel_Code] = ?</property>
                   dataType="System.Int32"
                   description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
                   name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
+                  typeConverter="LookupNoMatchBehavior">0</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
@@ -4560,6 +4560,7 @@ where [refTable].[Cancel_Code] = ?</property>
                 <output
                   refId="Package\Load Fact_Flights\Cancel Codes Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Load Fact_Flights\Cancel Codes Lookup.Inputs[Lookup Input]">
@@ -4866,6 +4867,81 @@ where [refTable].[FullDate] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Load Fact_Flights\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Fact_Flights\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact_Flights\Derived Column 1.Inputs[Derived Column Input].Columns[CANCELLATION_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CANCELLATION_CODE"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[CANCELLATION_CODE]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[CANCELLATION_CODE]}) || [TRIM](#{Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[CANCELLATION_CODE]}) == "" ? "NONE" : #{Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[CANCELLATION_CODE]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(CANCELLATION_CODE) || TRIM(CANCELLATION_CODE) == "" ? "NONE" : CANCELLATION_CODE</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact_Flights\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Fact_Flights\Derived Column 1.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact_Flights\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Fact_Flights\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact_Flights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact_Flights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact_Flights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact_Flights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Fact_Flights\Dest Airport Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -5022,191 +5098,6 @@ where [refTable].[Airport_Code] = ?</property>
                   <externalMetadataColumns />
                 </output>
               </outputs>
-            </component>
-            <component
-              refId="Package\Load Fact_Flights\Flat File Destination"
-              componentClassID="Microsoft.FlatFileDestination"
-              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Flat File Destination"
-              localeId="1033"
-              name="Flat File Destination"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Specifies whether the data will overwrite or append to the destination file."
-                  name="Overwrite">true</property>
-                <property
-                  dataType="System.Null"
-                  description="Specifies the text to write to the destination file before any data is written."
-                  expressionType="Notify"
-                  name="Header" />
-                <property
-                  dataType="System.Boolean"
-                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
-                  name="EscapeQualifier">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Fact_Flights\Flat File Destination.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
-                  name="FlatFileConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input]"
-                  hasSideEffects="true"
-                  name="Flat File Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[FL_DATE]"
-                      cachedDataType="dbDate"
-                      cachedName="FL_DATE"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[FL_DATE]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[FL_DATE]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[FL_NUMBER]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="FL_NUMBER"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[FL_NUMBER]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[FL_NUMBER]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[AIRLINE_CODE]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="AIRLINE_CODE"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[AIRLINE_CODE]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[AIRLINE_CODE]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[ORIGIN]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="ORIGIN"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ORIGIN]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[ORIGIN]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[DEST]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="DEST"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DEST]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEST]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[CANCELLATION_CODE]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="CANCELLATION_CODE"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CANCELLATION_CODE]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[CANCELLATION_CODE]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[STATUS_CODE]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="STATUS_CODE"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[STATUS_CODE]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[STATUS_CODE]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[DEP_DELAY]"
-                      cachedDataType="i4"
-                      cachedName="DEP_DELAY"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DEP_DELAY]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEP_DELAY]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[ARR_DELAY]"
-                      cachedDataType="i4"
-                      cachedName="ARR_DELAY"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ARR_DELAY]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[ARR_DELAY]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[DISTANCE]"
-                      cachedDataType="i4"
-                      cachedName="DISTANCE"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DISTANCE]"
-                      lineageId="Package\Load Fact_Flights\OLE DB Source.Outputs[OLE DB Source Output].Columns[DISTANCE]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[Airline_SK]"
-                      cachedDataType="i4"
-                      cachedName="Airline_SK"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Airline_SK]"
-                      lineageId="Package\Load Fact_Flights\Airline Lookup.Outputs[Lookup Match Output].Columns[Airline_SK]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[Origin_Airport_SK]"
-                      cachedDataType="i4"
-                      cachedName="Origin_Airport_SK"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Origin_Airport_SK]"
-                      lineageId="Package\Load Fact_Flights\Origin Airport Lookup.Outputs[Lookup Match Output].Columns[Origin_Airport_SK]" />
-                    <inputColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].Columns[Dest_Airport_SK]"
-                      cachedDataType="i4"
-                      cachedName="Dest_Airport_SK"
-                      externalMetadataColumnId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Dest_Airport_SK]"
-                      lineageId="Package\Load Fact_Flights\Dest Airport Lookup.Outputs[Lookup Match Output].Columns[Dest_Airport_SK]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[FL_DATE]"
-                      dataType="dbDate"
-                      name="FL_DATE" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[FL_NUMBER]"
-                      dataType="wstr"
-                      length="50"
-                      name="FL_NUMBER" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[AIRLINE_CODE]"
-                      dataType="wstr"
-                      length="50"
-                      name="AIRLINE_CODE" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ORIGIN]"
-                      dataType="wstr"
-                      length="50"
-                      name="ORIGIN" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DEST]"
-                      dataType="wstr"
-                      length="50"
-                      name="DEST" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CANCELLATION_CODE]"
-                      dataType="wstr"
-                      length="50"
-                      name="CANCELLATION_CODE" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[STATUS_CODE]"
-                      dataType="wstr"
-                      length="50"
-                      name="STATUS_CODE" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DEP_DELAY]"
-                      dataType="i4"
-                      name="DEP_DELAY" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ARR_DELAY]"
-                      dataType="i4"
-                      name="ARR_DELAY" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DISTANCE]"
-                      dataType="i4"
-                      name="DISTANCE" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Airline_SK]"
-                      dataType="i4"
-                      name="Airline_SK" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Origin_Airport_SK]"
-                      dataType="i4"
-                      name="Origin_Airport_SK" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Dest_Airport_SK]"
-                      dataType="i4"
-                      name="Dest_Airport_SK" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
             </component>
             <component
               refId="Package\Load Fact_Flights\Flight Status Lookup"
@@ -6250,6 +6141,11 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
               name="Derived Column Output"
               startId="Package\Load Fact_Flights\Derived Column.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Load Fact_Flights.Paths[Derived Column Output1]"
+              endId="Package\Load Fact_Flights\Cancel Codes Lookup.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Load Fact_Flights\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Load Fact_Flights.Paths[Lookup Match Output]"
               endId="Package\Load Fact_Flights\Origin Airport Lookup.Inputs[Lookup Input]"
               name="Lookup Match Output"
@@ -6261,34 +6157,29 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
               startId="Package\Load Fact_Flights\Origin Airport Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Fact_Flights.Paths[Lookup Match Output2]"
-              endId="Package\Load Fact_Flights\Cancel Codes Lookup.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Load Fact_Flights\Dest Airport Lookup.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Load Fact_Flights.Paths[Lookup Match Output3]"
-              endId="Package\Load Fact_Flights\Flight Status Lookup.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Load Fact_Flights\Cancel Codes Lookup.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Load Fact_Flights.Paths[Lookup Match Output4]"
               endId="Package\Load Fact_Flights\Date Lookup.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Load Fact_Flights\Flight Status Lookup.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Load Fact_Flights.Paths[Lookup Match Output5]"
+              refId="Package\Load Fact_Flights.Paths[Lookup Match Output3]"
               endId="Package\Load Fact_Flights\Route Lookup.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Load Fact_Flights\Date Lookup.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Load Fact_Flights.Paths[Lookup Match Output6]"
+              refId="Package\Load Fact_Flights.Paths[Lookup Match Output4]"
               endId="Package\Load Fact_Flights\Derived Column.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Load Fact_Flights\Route Lookup.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Load Fact_Flights.Paths[Lookup No Match Output]"
-              endId="Package\Load Fact_Flights\Flat File Destination.Inputs[Flat File Destination Input]"
-              name="Lookup No Match Output"
-              startId="Package\Load Fact_Flights\Cancel Codes Lookup.Outputs[Lookup No Match Output]" />
+              refId="Package\Load Fact_Flights.Paths[Lookup Match Output5]"
+              endId="Package\Load Fact_Flights\Flight Status Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Fact_Flights\Cancel Codes Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Fact_Flights.Paths[Lookup Match Output6]"
+              endId="Package\Load Fact_Flights\Derived Column 1.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Fact_Flights\Dest Airport Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Fact_Flights.Paths[OLE DB Source Output]"
               endId="Package\Load Fact_Flights\Airline Lookup.Inputs[Lookup Input]"
@@ -7888,64 +7779,16 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           Size="180.8,41.6"
           Id="Package\Load Fact_Flights\Cancel Codes Lookup"
           TopLeft="668.571418608938,212.142853981682" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output2]"
-          TopLeft="759.228561423506,163.028569619145">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49.1142843625375"
-              Start="0,0"
-              End="0,41.6142843625375">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.6142843625375" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,15.0024546812687,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="172.8,41.6"
           Id="Package\Load Fact_Flights\Flight Status Lookup"
           TopLeft="450.71427899812,211.42856827804" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output3]"
-          TopLeft="668.571418608938,232.585711129861">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-45.0571396108186,0"
-              Start="0,0"
-              End="-37.5571396108186,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-37.5571396108186,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-66.9699565241593,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="137.6,41.6"
           Id="Package\Load Fact_Flights\Date Lookup"
           TopLeft="268.571424569402,211.42856827804" />
         <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output4]"
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output2]"
           TopLeft="450.71427899812,232.22856827804">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7973,7 +7816,7 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           Id="Package\Load Fact_Flights\Route Lookup"
           TopLeft="271.428567383971,304.999995455146" />
         <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output5]"
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output3]"
           TopLeft="340.199995976687,253.02856827804">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8001,7 +7844,7 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           Id="Package\Load Fact_Flights\Derived Column"
           TopLeft="508.571420993124,307.023804948798" />
         <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output6]"
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output4]"
           TopLeft="414.628567383971,326.811900201972">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8051,43 +7894,101 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Load Fact_Flights\Flat File Destination"
-          TopLeft="872.999986991286,308.999995395541" />
+          Size="161.6,41.6"
+          Id="Package\Load Fact_Flights\Derived Column 1"
+          TopLeft="883.84614067582,167.692305193498" />
         <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup No Match Output]"
-          TopLeft="758.971418608938,253.742853981682">
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output5]"
+          TopLeft="668.571418608938,232.585711129861">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="199.228568382348,55.257141413859"
+              EndConnector="-45.0571396108186,0"
               Start="0,0"
-              End="199.228568382348,47.757141413859">
+              End="-37.5571396108186,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.6285707069295" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.6285707069295"
-                    Point2="0,27.6285707069295"
-                    Point3="4,27.6285707069295" />
-                  <mssgle:LineSegment
-                    End="195.228568382348,27.6285707069295" />
-                  <mssgle:CubicBezierSegment
-                    Point1="195.228568382348,27.6285707069295"
-                    Point2="199.228568382348,27.6285707069295"
-                    Point3="199.228568382348,31.6285707069295" />
-                  <mssgle:LineSegment
-                    End="199.228568382348,47.757141413859" />
+                    End="-37.5571396108186,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="43.807897472424,32.6285707069295,111.6127734375,11.609375"
+              BoundingBox="-66.9699565241593,5,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output6]"
+          TopLeft="844.685704238074,142.228569619145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.1604364377456,46.2637355743529"
+              Start="0,0"
+              End="31.6604364377456,46.2637355743529">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15.5802182188728,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.5802182188728,0"
+                    Point2="19.5802182188728,0"
+                    Point3="19.5802182188728,4" />
+                  <mssgle:LineSegment
+                    End="19.5802182188728,42.2637355743529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.5802182188728,42.2637355743529"
+                    Point2="19.5802182188728,46.2637355743529"
+                    Point3="23.5802182188728,46.2637355743529" />
+                  <mssgle:LineSegment
+                    End="31.6604364377456,46.2637355743529" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.6111684998772,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Derived Column Output1]"
+          TopLeft="883.84614067582,194.092305193498">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-34.4747220668817,38.8505487881847"
+              Start="0,0"
+              End="-26.9747220668817,38.8505487881847">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-10.5559937615723,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.5559937615723,0"
+                    Point2="-14.5559937615723,0"
+                    Point3="-14.5559937615723,4" />
+                  <mssgle:LineSegment
+                    End="-14.5559937615723,34.8505487881847" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.5559937615723,34.8505487881847"
+                    Point2="-14.5559937615723,38.8505487881847"
+                    Point3="-18.5559937615723,38.8505487881847" />
+                  <mssgle:LineSegment
+                    End="-26.9747220668817,38.8505487881847" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
