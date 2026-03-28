@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Update_Accumulating_Fact"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{B96732A1-20DD-4957-A8BD-41DE3FB4790B}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{063E78A8-4FEA-41C6-949D-EA79E7E124AA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,7 +38,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="txn_id"
-              DTS:DTSID="{98DCE64C-6A21-4F70-81E0-803E056797A4}"
+              DTS:DTSID="{4BD786A4-A108-42E5-818A-8999DB51201C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="accm_txn_complete_time"
-              DTS:DTSID="{FB6E9699-58A4-4DB3-95E8-09B5146F79ED}"
+              DTS:DTSID="{6ACDB164-1B0D-4154-A0E3-6CC576C51053}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -156,6 +156,85 @@
           version="1">
           <components>
             <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[accm_txn_complete_time]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="accm_txn_complete_time"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[accm_txn_complete_time]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of accm_txn_complete_time]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of accm_txn_complete_time]"
+                      name="Copy of accm_txn_complete_time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[accm_txn_complete_time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -169,17 +248,17 @@
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[accm_txn_complete_time]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="accm_txn_complete_time"
-                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[accm_txn_complete_time]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[accm_txn_create_time]"
                       cachedDataType="dbTimeStamp"
                       cachedName="accm_txn_create_time"
                       lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[accm_txn_create_time]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Copy of accm_txn_complete_time]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of accm_txn_complete_time"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of accm_txn_complete_time]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -193,28 +272,6 @@
                   synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Process_Hours]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Process_Hours]"
-                      name="Process_Hours"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEDIFF]("hh",#{Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[accm_txn_create_time]},(DT_DBTIMESTAMP)#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[accm_txn_complete_time]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEDIFF("hh",accm_txn_create_time,(DT_DBTIMESTAMP)accm_txn_complete_time)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[txn_process_time_hours]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
@@ -227,13 +284,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[DATEDIFF]("hh",#{Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[accm_txn_create_time]},(DT_DBTIMESTAMP)#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[accm_txn_complete_time]})</property>
+                          name="Expression">[DATEDIFF]("hh",#{Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[accm_txn_create_time]},(DT_DBTIMESTAMP)#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of accm_txn_complete_time]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">DATEDIFF("hh",accm_txn_create_time,(DT_DBTIMESTAMP)accm_txn_complete_time)</property>
+                          name="FriendlyExpression">DATEDIFF("hh",accm_txn_create_time,(DT_DBTIMESTAMP)[Copy of accm_txn_complete_time])</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -744,13 +801,18 @@ WHERE txn_id = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[Derived Column Output]"
               endId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Flat File Source Output]"
-              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
               name="Flat File Source Output"
               startId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
             <path
@@ -793,119 +855,97 @@ WHERE txn_id = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow Task\Flat File Destination"
+          TopLeft="706.666628056104,275.599998083512" />
+        <NodeLayout
           Size="151.2,41.6"
           Id="Package\Data Flow Task\Flat File Source"
-          TopLeft="555.83330296394,49.3999996564786" />
+          TopLeft="559.166636115148,8.66666660639978" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\Data Flow Task\Lookup"
-          TopLeft="578.333301734595,156.866665575835" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
-          TopLeft="633.083302349268,90.9999996564786">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65.8666659193569"
-              Start="0,0"
-              End="0,58.3666659193569">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.3666659193569" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="578.333301734595,165.533332182235" />
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="403.333311296172,275.599998083512" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="634.733301734595,198.466665575835">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-154.999990438422,77.1333325076765"
-              Start="0,0"
-              End="-154.999990438422,69.6333325076765">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5666662538382" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.5666662538382"
-                    Point2="0,38.5666662538382"
-                    Point3="-4,38.5666662538382" />
-                  <mssgle:LineSegment
-                    End="-150.999990438422,38.5666662538382" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-150.999990438422,38.5666662538382"
-                    Point2="-154.999990438422,38.5666662538382"
-                    Point3="-154.999990438422,42.5666662538382" />
-                  <mssgle:LineSegment
-                    End="-154.999990438422,69.6333325076765" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-125.691381937961,43.5666662538382,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Data Flow Task\Flat File Destination"
-          TopLeft="706.666628056104,275.599998083512" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="652.199968401261,198.466665575835">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="139.666659654843,77.1333325076764"
-              Start="0,0"
-              End="139.666659654843,69.6333325076764">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5006057234147" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.5006057234147"
-                    Point2="0,31.5006057234147"
-                    Point3="4,31.5006057234147" />
-                  <mssgle:LineSegment
-                    End="135.666659654843,31.5006057234147" />
-                  <mssgle:CubicBezierSegment
-                    Point1="135.666659654843,31.5006057234147"
-                    Point2="139.666659654843,31.5006057234147"
-                    Point3="139.666659654843,35.5006057234147" />
-                  <mssgle:LineSegment
-                    End="139.666659654843,69.6333325076764" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="14.0269431086713,36.5006057234147,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="167.2,41.6"
           Id="Package\Data Flow Task\OLE DB Command"
           TopLeft="397.499978281558,363.99999746879" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="652.199968401262,207.133332182235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="139.666659654842,68.4666659012773"
+              Start="0,0"
+              End="139.666659654842,60.9666659012773">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9612118086335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9612118086335"
+                    Point2="0,27.9612118086335"
+                    Point3="4,27.9612118086335" />
+                  <mssgle:LineSegment
+                    End="135.666659654842,27.9612118086335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="135.666659654842,27.9612118086335"
+                    Point2="139.666659654842,27.9612118086335"
+                    Point3="139.666659654842,31.9612118086335" />
+                  <mssgle:LineSegment
+                    End="139.666659654842,60.9666659012773" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="14.0269431086712,32.9612118086335,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="617.266635067928,207.133332182235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-137.533323771756,68.4666659012773"
+              Start="0,0"
+              End="-137.533323771756,60.9666659012773">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9612118086335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9612118086335"
+                    Point2="0,27.9612118086335"
+                    Point3="-4,27.9612118086335" />
+                  <mssgle:LineSegment
+                    End="-133.533323771756,27.9612118086335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-133.533323771756,27.9612118086335"
+                    Point2="-137.533323771756,27.9612118086335"
+                    Point3="-137.533323771756,31.9612118086335" />
+                  <mssgle:LineSegment
+                    End="-137.533323771756,60.9666659012773" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-116.958048604628,32.9612118086335,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
           TopLeft="480.416644788865,317.199998083512">
@@ -920,6 +960,56 @@ WHERE txn_id = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,39.2999993852775" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="559.166636115148,85.7999994033575" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="635.966636115148,50.2666666063998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.5333327969578"
+              Start="0,0"
+              End="0,28.0333327969578">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.0333327969578" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.45359375,9.23248671097888,30.9071875,9.568359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="635.949968924872,127.399999403358">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.1333327788772"
+              Start="0,0"
+              End="0,30.6333327788772">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6333327788772" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -947,7 +1037,7 @@ WHERE txn_id = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

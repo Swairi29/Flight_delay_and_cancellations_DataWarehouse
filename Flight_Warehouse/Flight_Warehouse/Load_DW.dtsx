@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load_DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{77EF9F84-349B-44CF-84D2-73040E5381B9}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{043075AB-25AE-485F-A25A-B4A36FC75103}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -404,7 +404,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Airline\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       dataType="wstr"
-                      length="100"
+                      length="255"
                       name="Param_0">
                       <properties>
                         <property
@@ -416,7 +416,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Airline\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
-                      length="20"
+                      length="255"
                       name="Param_1">
                       <properties>
                         <property
@@ -532,7 +532,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Airline\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       dataType="wstr"
-                      length="100"
+                      length="255"
                       name="Param_0">
                       <properties>
                         <property
@@ -1339,7 +1339,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Airport\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Param_1">
                       <properties>
                         <property
@@ -1455,7 +1455,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Airport\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Param_1">
                       <properties>
                         <property
@@ -2172,7 +2172,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_CancelCodes\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
-                      length="5"
+                      length="50"
                       name="Param_1">
                       <properties>
                         <property
@@ -2288,7 +2288,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_CancelCodes\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
-                      length="5"
+                      length="50"
                       name="Param_1">
                       <properties>
                         <property
@@ -3729,7 +3729,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Route\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Param_0">
                       <properties>
                         <property
@@ -3741,7 +3741,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Route\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Param_1">
                       <properties>
                         <property
@@ -3864,7 +3864,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Route\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Param_0">
                       <properties>
                         <property
@@ -3876,7 +3876,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Dim_Route\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Param_1">
                       <properties>
                         <property
@@ -4491,7 +4491,7 @@ where [refTable].[Cancel_Code] = ?</property>
                   dataType="System.Int32"
                   description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
                   name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
+                  typeConverter="LookupNoMatchBehavior">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
@@ -4560,7 +4560,6 @@ where [refTable].[Cancel_Code] = ?</property>
                 <output
                   refId="Package\Load Fact_Flights\Cancel Codes Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="IgnoreFailure"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Load Fact_Flights\Cancel Codes Lookup.Inputs[Lookup Input]">
@@ -6293,6 +6292,10 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           Size="160.8,41.6"
           Id="Package\Load Fact_Flights"
           TopLeft="410.606038171536,463.272724051187" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Truncate Fact Table"
+          TopLeft="109.848478846628,91.575757186762" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="485.601492946716,97.0666662809584">
@@ -6403,10 +6406,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Truncate Fact Table"
-          TopLeft="109.848478846628,91.575757186762" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="281.048478846628,112.375757186762">
@@ -6450,13 +6449,25 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="176,41.6"
+          Id="Package\Load Dim_Airline\OLE DB Command 1"
+          TopLeft="507.266663707131,253.766666353278" />
+        <NodeLayout
           Size="152,41.6"
           Id="Package\Load Dim_Airline\OLE DB Source"
           TopLeft="233.1,5.49999999999984" />
         <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Load Dim_Airline\OLE DB Command"
+          TopLeft="232.999999590218,245.966666407519" />
+        <NodeLayout
           Size="208,41.6"
           Id="Package\Load Dim_Airline\Slowly Changing Dimension"
           TopLeft="205.1,107.1" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Load Dim_Airline\Insert Destination"
+          TopLeft="5.50000000000009,245.099999746879" />
         <EdgeLayout
           Id="Package\Load Dim_Airline.Paths[OLE DB Source Output]"
           TopLeft="309.1,47.0999999999998">
@@ -6479,10 +6490,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Load Dim_Airline\Insert Destination"
-          TopLeft="5.50000000000009,245.099999746879" />
         <EdgeLayout
           Id="Package\Load Dim_Airline.Paths[New Output]"
           TopLeft="259.1,148.7">
@@ -6519,10 +6526,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\Load Dim_Airline\OLE DB Command"
-          TopLeft="232.999999590218,245.966666407519" />
         <EdgeLayout
           Id="Package\Load Dim_Airline.Paths[Inferred Member Updates Output]"
           TopLeft="312.849999795109,148.7">
@@ -6547,10 +6550,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\Load Dim_Airline\OLE DB Command 1"
-          TopLeft="507.266663707131,253.766666353278" />
         <EdgeLayout
           Id="Package\Load Dim_Airline.Paths[Changing Attribute Updates Output]"
           TopLeft="359.1,148.7">
@@ -6672,13 +6671,59 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Load Dim_Airport\OLE DB Command"
+          TopLeft="5.50000000000009,310.3" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Load Dim_Airport\OLE DB Command 1"
+          TopLeft="295.1,208.7" />
+        <NodeLayout
           Size="152,41.6"
           Id="Package\Load Dim_Airport\OLE DB Source"
           TopLeft="158.1,34.2499995715916" />
         <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Load Dim_Airport\Derived Column 1"
+          TopLeft="152.050000018627,487.250000391155" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Load Dim_Airport\Union All"
+          TopLeft="174.1,411.9" />
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Load Dim_Airport\Insert Destination"
+          TopLeft="140.500000208616,565.100000745057" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load Dim_Airport\Derived Column"
+          TopLeft="20.7000000000001,208.7" />
+        <NodeLayout
           Size="208,41.6"
           Id="Package\Load Dim_Airport\Slowly Changing Dimension"
           TopLeft="130.1,107.1" />
+        <EdgeLayout
+          Id="Package\Load Dim_Airport.Paths[Union All Output 1]"
+          TopLeft="233.475000009313,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.7500003911553"
+              Start="0,0"
+              End="0,26.2500003911553">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.2500003911553" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Dim_Airport.Paths[OLE DB Source Output]"
           TopLeft="234.1,75.8499995715916">
@@ -6701,76 +6746,32 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Load Dim_Airport\Derived Column"
-          TopLeft="20.7000000000001,208.7" />
         <EdgeLayout
-          Id="Package\Load Dim_Airport.Paths[Historical Attribute Inserts Output]"
-          TopLeft="184.1,148.7">
+          Id="Package\Load Dim_Airport.Paths[OLE DB Command Output]"
+          TopLeft="89.1000000000001,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-87,59.9999999999999"
+              EndConnector="126.333333333333,59.9999999999999"
               Start="0,0"
-              End="-87,52.4999999999999">
+              End="126.333333333333,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.506329113924" />
+                    End="0,31.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.506329113924"
-                    Point2="0,20.506329113924"
-                    Point3="-4,20.506329113924" />
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
                   <mssgle:LineSegment
-                    End="-83,20.506329113924" />
+                    End="122.333333333333,35.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="-83,20.506329113924"
-                    Point2="-87,20.506329113924"
-                    Point3="-87,24.506329113924" />
+                    Point1="122.333333333333,35.5263157894736"
+                    Point2="126.333333333333,35.5263157894736"
+                    Point3="126.333333333333,39.5263157894736" />
                   <mssgle:LineSegment
-                    End="-87,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-118.55638671875,25.506329113924,150.1127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\Load Dim_Airport\OLE DB Command"
-          TopLeft="5.50000000000009,310.3" />
-        <EdgeLayout
-          Id="Package\Load Dim_Airport.Paths[Derived Column Output]"
-          TopLeft="97.1000000000001,250.3">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-8,59.9999999999999"
-              Start="0,0"
-              End="-8,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-4,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4,30"
-                    Point2="-8,30"
-                    Point3="-8,34" />
-                  <mssgle:LineSegment
-                    End="-8,52.4999999999999" />
+                    End="126.333333333333,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6779,10 +6780,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\Load Dim_Airport\Union All"
-          TopLeft="174.1,411.9" />
         <EdgeLayout
           Id="Package\Load Dim_Airport.Paths[New Output]"
           TopLeft="234.1,148.7">
@@ -6820,96 +6817,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Dim_Airport.Paths[OLE DB Command Output]"
-          TopLeft="89.1000000000001,351.9">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="126.333333333333,59.9999999999999"
-              Start="0,0"
-              End="126.333333333333,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5263157894736" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5263157894736"
-                    Point2="0,35.5263157894736"
-                    Point3="4,35.5263157894736" />
-                  <mssgle:LineSegment
-                    End="122.333333333333,35.5263157894736" />
-                  <mssgle:CubicBezierSegment
-                    Point1="122.333333333333,35.5263157894736"
-                    Point2="126.333333333333,35.5263157894736"
-                    Point3="126.333333333333,39.5263157894736" />
-                  <mssgle:LineSegment
-                    End="126.333333333333,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Load Dim_Airport\Derived Column 1"
-          TopLeft="152.050000018627,487.250000391155" />
-        <EdgeLayout
-          Id="Package\Load Dim_Airport.Paths[Union All Output 1]"
-          TopLeft="233.475000009313,453.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.7500003911553"
-              Start="0,0"
-              End="0,26.2500003911553">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.2500003911553" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\Load Dim_Airport\Insert Destination"
-          TopLeft="140.500000208616,565.100000745057" />
-        <EdgeLayout
-          Id="Package\Load Dim_Airport.Paths[Derived Column Output1]"
-          TopLeft="233.875000113621,528.850000391155">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.2500003539025"
-              Start="0,0"
-              End="0,28.7500003539025">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.7500003539025" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\Load Dim_Airport\OLE DB Command 1"
-          TopLeft="295.1,208.7" />
-        <EdgeLayout
           Id="Package\Load Dim_Airport.Paths[Inferred Member Updates Output]"
           TopLeft="284.1,148.7">
           <EdgeLayout.Curve>
@@ -6945,57 +6852,15 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Load Dim_CancelCodes">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Load Dim_CancelCodes\OLE DB Source"
-          TopLeft="233.1,5.49999999999984" />
-        <NodeLayout
-          Size="208,41.6"
-          Id="Package\Load Dim_CancelCodes\Slowly Changing Dimension"
-          TopLeft="205.1,107.1" />
         <EdgeLayout
-          Id="Package\Load Dim_CancelCodes.Paths[OLE DB Source Output]"
-          TopLeft="309.1,47.0999999999998">
+          Id="Package\Load Dim_Airport.Paths[Historical Attribute Inserts Output]"
+          TopLeft="184.1,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-87,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Load Dim_CancelCodes\Insert Destination"
-          TopLeft="5.50000000000009,208.7" />
-        <EdgeLayout
-          Id="Package\Load Dim_CancelCodes.Paths[New Output]"
-          TopLeft="259.1,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-174,60"
-              Start="0,0"
-              End="-174,52.5">
+              End="-87,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -7006,121 +6871,37 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
                     Point2="0,20.506329113924"
                     Point3="-4,20.506329113924" />
                   <mssgle:LineSegment
-                    End="-170,20.506329113924" />
+                    End="-83,20.506329113924" />
                   <mssgle:CubicBezierSegment
-                    Point1="-170,20.506329113924"
-                    Point2="-174,20.506329113924"
-                    Point3="-174,24.506329113924" />
+                    Point1="-83,20.506329113924"
+                    Point2="-87,20.506329113924"
+                    Point3="-87,24.506329113924" />
                   <mssgle:LineSegment
-                    End="-174,52.5" />
+                    End="-87,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-114.09138671875,25.506329113924,54.1827734375,11.43359375"
+              BoundingBox="-118.55638671875,25.506329113924,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\Load Dim_CancelCodes\OLE DB Command"
-          TopLeft="225.5,208.7" />
         <EdgeLayout
-          Id="Package\Load Dim_CancelCodes.Paths[Inferred Member Updates Output]"
-          TopLeft="309.1,148.7">
+          Id="Package\Load Dim_Airport.Paths[Derived Column Output1]"
+          TopLeft="233.875000113621,528.850000391155">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,36.2500003539025"
               Start="0,0"
-              End="0,52.5">
+              End="0,28.7500003539025">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-74.40298828125,20.4208984375,148.8059765625,11.658203125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\Load Dim_CancelCodes\OLE DB Command 1"
-          TopLeft="453.1,208.7" />
-        <EdgeLayout
-          Id="Package\Load Dim_CancelCodes.Paths[Changing Attribute Updates Output]"
-          TopLeft="359.1,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="182,60"
-              Start="0,0"
-              End="182,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.506329113924" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.506329113924"
-                    Point2="0,20.506329113924"
-                    Point3="4,20.506329113924" />
-                  <mssgle:LineSegment
-                    End="178,20.506329113924" />
-                  <mssgle:CubicBezierSegment
-                    Point1="178,20.506329113924"
-                    Point2="182,20.506329113924"
-                    Point3="182,24.506329113924" />
-                  <mssgle:LineSegment
-                    End="182,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="12.46609375,25.506329113924,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Load Dim_FlightStatus">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Load Dim_FlightStatus\OLE DB Source"
-          TopLeft="233.1,5.49999999999984" />
-        <NodeLayout
-          Size="208,41.6"
-          Id="Package\Load Dim_FlightStatus\Slowly Changing Dimension"
-          TopLeft="205.1,107.1" />
-        <EdgeLayout
-          Id="Package\Load Dim_FlightStatus.Paths[OLE DB Source Output]"
-          TopLeft="309.1,47.0999999999998">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,28.7500003539025" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7129,112 +6910,38 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Load Dim_FlightStatus\Insert Destination"
-          TopLeft="5.50000000000009,208.7" />
         <EdgeLayout
-          Id="Package\Load Dim_FlightStatus.Paths[New Output]"
-          TopLeft="259.1,148.7">
+          Id="Package\Load Dim_Airport.Paths[Derived Column Output]"
+          TopLeft="97.1000000000001,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-174,60"
+              EndConnector="-8,59.9999999999999"
               Start="0,0"
-              End="-174,52.5">
+              End="-8,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.506329113924" />
+                    End="0,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.506329113924"
-                    Point2="0,20.506329113924"
-                    Point3="-4,20.506329113924" />
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
                   <mssgle:LineSegment
-                    End="-170,20.506329113924" />
+                    End="-4,30" />
                   <mssgle:CubicBezierSegment
-                    Point1="-170,20.506329113924"
-                    Point2="-174,20.506329113924"
-                    Point3="-174,24.506329113924" />
+                    Point1="-4,30"
+                    Point2="-8,30"
+                    Point3="-8,34" />
                   <mssgle:LineSegment
-                    End="-174,52.5" />
+                    End="-8,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-114.09138671875,25.506329113924,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\Load Dim_FlightStatus\OLE DB Command"
-          TopLeft="225.5,208.7" />
-        <EdgeLayout
-          Id="Package\Load Dim_FlightStatus.Paths[Inferred Member Updates Output]"
-          TopLeft="309.1,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-74.40298828125,20.4208984375,148.8059765625,11.658203125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\Load Dim_FlightStatus\OLE DB Command 1"
-          TopLeft="453.1,208.7" />
-        <EdgeLayout
-          Id="Package\Load Dim_FlightStatus.Paths[Changing Attribute Updates Output]"
-          TopLeft="359.1,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="182,60"
-              Start="0,0"
-              End="182,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.506329113924" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.506329113924"
-                    Point2="0,20.506329113924"
-                    Point3="4,20.506329113924" />
-                  <mssgle:LineSegment
-                    End="178,20.506329113924" />
-                  <mssgle:CubicBezierSegment
-                    Point1="178,20.506329113924"
-                    Point2="182,20.506329113924"
-                    Point3="182,24.506329113924" />
-                  <mssgle:LineSegment
-                    End="182,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="12.46609375,25.506329113924,157.0678125,11.6630859375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7242,6 +6949,19 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Dim_Airport\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Airport\Insert Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7298,32 +7018,152 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Dim_Airport\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Dim_CancelCodes\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Dim_CancelCodes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Load Dim_CancelCodes\Slowly Changing Dimension"
+          TopLeft="205.1,107.1" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Load Dim_CancelCodes\OLE DB Command"
+          TopLeft="225.5,208.7" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Load Dim_CancelCodes\OLE DB Command 1"
+          TopLeft="453.1,208.7" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Load Dim_CancelCodes\OLE DB Source"
+          TopLeft="233.1,5.49999999999984" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Load Dim_CancelCodes\Insert Destination"
+          TopLeft="5.50000000000009,208.7" />
+        <EdgeLayout
+          Id="Package\Load Dim_CancelCodes.Paths[Inferred Member Updates Output]"
+          TopLeft="309.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-74.40298828125,20.4208984375,148.8059765625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_CancelCodes.Paths[Changing Attribute Updates Output]"
+          TopLeft="359.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182,60"
+              Start="0,0"
+              End="182,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="178,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178,20.506329113924"
+                    Point2="182,20.506329113924"
+                    Point3="182,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="182,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.46609375,25.506329113924,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_CancelCodes.Paths[OLE DB Source Output]"
+          TopLeft="309.1,47.0999999999998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_CancelCodes.Paths[New Output]"
+          TopLeft="259.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174,60"
+              Start="0,0"
+              End="-174,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="-4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="-170,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-170,20.506329113924"
+                    Point2="-174,20.506329113924"
+                    Point3="-174,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="-174,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-114.09138671875,25.506329113924,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Dim_CancelCodes\Slowly Changing Dimension">
     <Properties>
@@ -7382,7 +7222,7 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Dim_FlightStatus\OLE DB Source">
+    design-time-name="Package\Load Dim_CancelCodes\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7394,6 +7234,152 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Dim_FlightStatus">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Load Dim_FlightStatus\Slowly Changing Dimension"
+          TopLeft="205.1,107.1" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Load Dim_FlightStatus\OLE DB Command"
+          TopLeft="225.5,208.7" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Load Dim_FlightStatus\OLE DB Source"
+          TopLeft="233.1,5.49999999999984" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Load Dim_FlightStatus\Insert Destination"
+          TopLeft="5.50000000000009,208.7" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Load Dim_FlightStatus\OLE DB Command 1"
+          TopLeft="453.1,208.7" />
+        <EdgeLayout
+          Id="Package\Load Dim_FlightStatus.Paths[Inferred Member Updates Output]"
+          TopLeft="309.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-74.40298828125,20.4208984375,148.8059765625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_FlightStatus.Paths[Changing Attribute Updates Output]"
+          TopLeft="359.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182,60"
+              Start="0,0"
+              End="182,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="178,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178,20.506329113924"
+                    Point2="182,20.506329113924"
+                    Point3="182,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="182,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.46609375,25.506329113924,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_FlightStatus.Paths[OLE DB Source Output]"
+          TopLeft="309.1,47.0999999999998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_FlightStatus.Paths[New Output]"
+          TopLeft="259.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174,60"
+              Start="0,0"
+              End="-174,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="-4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="-170,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-170,20.506329113924"
+                    Point2="-174,20.506329113924"
+                    Point3="-174,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="-174,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-114.09138671875,25.506329113924,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Dim_FlightStatus\Slowly Changing Dimension">
     <Properties>
@@ -7450,6 +7436,19 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_FlightStatus\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Dim_Route">
     <LayoutInfo>
@@ -7460,75 +7459,21 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           Id="Package\Load Dim_Route\OLE DB Source"
           TopLeft="233.1,5.49999999999984" />
         <NodeLayout
-          Size="208,41.6"
-          Id="Package\Load Dim_Route\Slowly Changing Dimension"
-          TopLeft="205.1,107.1" />
-        <EdgeLayout
-          Id="Package\Load Dim_Route.Paths[OLE DB Source Output]"
-          TopLeft="309.1,47.0999999999998">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Load Dim_Route\Insert Destination"
-          TopLeft="5.50000000000009,208.7" />
-        <EdgeLayout
-          Id="Package\Load Dim_Route.Paths[New Output]"
-          TopLeft="259.1,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-174,60"
-              Start="0,0"
-              End="-174,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.506329113924" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.506329113924"
-                    Point2="0,20.506329113924"
-                    Point3="-4,20.506329113924" />
-                  <mssgle:LineSegment
-                    End="-170,20.506329113924" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-170,20.506329113924"
-                    Point2="-174,20.506329113924"
-                    Point3="-174,24.506329113924" />
-                  <mssgle:LineSegment
-                    End="-174,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-114.09138671875,25.506329113924,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="176,41.6"
+          Id="Package\Load Dim_Route\OLE DB Command 1"
+          TopLeft="453.1,208.7" />
         <NodeLayout
           Size="167.2,41.6"
           Id="Package\Load Dim_Route\OLE DB Command"
           TopLeft="225.5,208.7" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Load Dim_Route\Slowly Changing Dimension"
+          TopLeft="205.1,107.1" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Load Dim_Route\Insert Destination"
+          TopLeft="5.50000000000009,208.7" />
         <EdgeLayout
           Id="Package\Load Dim_Route.Paths[Inferred Member Updates Output]"
           TopLeft="309.1,148.7">
@@ -7553,10 +7498,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\Load Dim_Route\OLE DB Command 1"
-          TopLeft="453.1,208.7" />
         <EdgeLayout
           Id="Package\Load Dim_Route.Paths[Changing Attribute Updates Output]"
           TopLeft="359.1,148.7">
@@ -7593,22 +7534,67 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_Route.Paths[OLE DB Source Output]"
+          TopLeft="309.1,47.0999999999998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_Route.Paths[New Output]"
+          TopLeft="259.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174,60"
+              Start="0,0"
+              End="-174,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="-4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="-170,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-170,20.506329113924"
+                    Point2="-174,20.506329113924"
+                    Point3="-174,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="-174,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-114.09138671875,25.506329113924,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Dim_Route\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Dim_Route\Slowly Changing Dimension">
     <Properties>
@@ -7660,6 +7646,19 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Route\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Dim_Route\Insert Destination">
     <Properties>
       <Property>
@@ -7682,9 +7681,45 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           Id="Package\Load Fact_Flights\OLE DB Source"
           TopLeft="489.714278416974,26.5714281754834" />
         <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Load Fact_Flights\Dest Airport Lookup"
+          TopLeft="674.285704238074,121.428569619145" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Load Fact_Flights\Flight Status Lookup"
+          TopLeft="450.71427899812,211.42856827804" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\Load Fact_Flights\Route Lookup"
+          TopLeft="271.428567383971,304.999995455146" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Load Fact_Flights\Cancel Codes Lookup"
+          TopLeft="668.571418608938,212.142853981682" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load Fact_Flights\Derived Column"
+          TopLeft="508.571420993124,307.023804948798" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Load Fact_Flights\Derived Column 1"
+          TopLeft="883.84614067582,167.692305193498" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Load Fact_Flights\Origin Airport Lookup"
+          TopLeft="462.142850256392,120.714283915503" />
+        <NodeLayout
           Size="144,41.6"
           Id="Package\Load Fact_Flights\Airline Lookup"
           TopLeft="271.428567383971,119.285712508219" />
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Load Fact_Flights\Date Lookup"
+          TopLeft="268.571424569402,211.42856827804" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Load Fact_Flights\OLE DB Destination"
+          TopLeft="502.380944894893,408.21428188788" />
         <EdgeLayout
           Id="Package\Load Fact_Flights.Paths[OLE DB Source Output]"
           TopLeft="565.714278416974,68.1714281754834">
@@ -7717,208 +7752,6 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="176.8,41.6"
-          Id="Package\Load Fact_Flights\Origin Airport Lookup"
-          TopLeft="462.142850256392,120.714283915503" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output]"
-          TopLeft="415.428567383971,140.799998211861">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="46.7142828724217,0"
-              Start="0,0"
-              End="39.2142828724217,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="39.2142828724217,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.5842452825392,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Load Fact_Flights\Dest Airport Lookup"
-          TopLeft="674.285704238074,121.428569619145" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output1]"
-          TopLeft="638.942850256392,141.871426767324">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="35.3428539816822,0"
-              Start="0,0"
-              End="27.8428539816822,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.8428539816822,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-34.2699597279089,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\Load Fact_Flights\Cancel Codes Lookup"
-          TopLeft="668.571418608938,212.142853981682" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\Load Fact_Flights\Flight Status Lookup"
-          TopLeft="450.71427899812,211.42856827804" />
-        <NodeLayout
-          Size="137.6,41.6"
-          Id="Package\Load Fact_Flights\Date Lookup"
-          TopLeft="268.571424569402,211.42856827804" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output2]"
-          TopLeft="450.71427899812,232.22856827804">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-44.5428544287171,0"
-              Start="0,0"
-              End="-37.0428544287171,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-37.0428544287171,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-66.7128139331085,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="143.2,41.6"
-          Id="Package\Load Fact_Flights\Route Lookup"
-          TopLeft="271.428567383971,304.999995455146" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output3]"
-          TopLeft="340.199995976687,253.02856827804">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.9714271771057"
-              Start="0,0"
-              End="0,44.4714271771057">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.4714271771057" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,16.4310260885528,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Load Fact_Flights\Derived Column"
-          TopLeft="508.571420993124,307.023804948798" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output4]"
-          TopLeft="414.628567383971,326.811900201972">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="93.9428536091531,0"
-              Start="0,0"
-              End="86.4428536091531,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="86.4428536091531,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-4.96995991417344,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Load Fact_Flights\OLE DB Destination"
-          TopLeft="502.380944894893,408.21428188788" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Derived Column Output]"
-          TopLeft="586.476182944009,348.623804948798">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.590476939082"
-              Start="0,0"
-              End="0,52.090476939082">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.090476939082" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Load Fact_Flights\Derived Column 1"
-          TopLeft="883.84614067582,167.692305193498" />
-        <EdgeLayout
-          Id="Package\Load Fact_Flights.Paths[Lookup Match Output5]"
-          TopLeft="668.571418608938,232.585711129861">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-45.0571396108186,0"
-              Start="0,0"
-              End="-37.5571396108186,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-37.5571396108186,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-66.9699565241593,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7958,6 +7791,150 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output5]"
+          TopLeft="668.571418608938,232.585711129861">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-45.0571396108186,0"
+              Start="0,0"
+              End="-37.5571396108186,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-37.5571396108186,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.9699565241593,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output4]"
+          TopLeft="414.628567383971,326.811900201972">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93.9428536091531,0"
+              Start="0,0"
+              End="86.4428536091531,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="86.4428536091531,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.96995991417345,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output3]"
+          TopLeft="340.199995976687,253.02856827804">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.9714271771057"
+              Start="0,0"
+              End="0,44.4714271771057">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.4714271771057" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,16.4310260885529,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output2]"
+          TopLeft="450.71427899812,232.22856827804">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-44.5428544287171,0"
+              Start="0,0"
+              End="-37.0428544287171,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-37.0428544287171,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.7128139331085,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output1]"
+          TopLeft="638.942850256392,141.871426767324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.3428539816822,0"
+              Start="0,0"
+              End="27.8428539816822,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.8428539816822,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.2699597279089,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Lookup Match Output]"
+          TopLeft="415.428567383971,140.799998211861">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.7142828724217,0"
+              Start="0,0"
+              End="39.2142828724217,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="39.2142828724217,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.5842452825392,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Load Fact_Flights.Paths[Derived Column Output1]"
           TopLeft="883.84614067582,194.092305193498">
           <EdgeLayout.Curve>
@@ -7991,6 +7968,28 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact_Flights.Paths[Derived Column Output]"
+          TopLeft="586.476182944009,348.623804948798">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.590476939082"
+              Start="0,0"
+              End="0,52.090476939082">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.090476939082" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -8008,58 +8007,12 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Fact_Flights\Airline Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Airline]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact_Flights\Origin Airport Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Airport]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Fact_Flights\Dest Airport Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8069,7 +8022,53 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact_Flights\Flight Status Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_FlightStatus]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact_Flights\Route Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Route]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8092,7 +8091,7 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8100,22 +8099,45 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Fact_Flights\Flight Status Lookup">
+    design-time-name="Package\Load Fact_Flights\Origin Airport Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Dim_FlightStatus]</Value>
+          type="q3:string">[dbo].[Dim_Airport]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact_Flights\Airline Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Airline]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8128,7 +8150,7 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8138,30 +8160,7 @@ where [refTable].[Origin_Airport_Code] = ? and [refTable].[Dest_Airport_Code] = 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact_Flights\Route Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Route]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

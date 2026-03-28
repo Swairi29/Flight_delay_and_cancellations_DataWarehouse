@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load_Stagging"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{FD87BBE8-DF83-414C-A0BD-2F4DA37CF190}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{218437B4-EA20-4FFD-9086-F4AABA514A41}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -485,7 +485,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute SQL Flight Data"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -502,7 +502,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute SQL Task Airline"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2755,68 +2755,72 @@
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FL_DATE]"
                       cachedDataType="dbDate"
                       cachedName="FL_DATE"
+                      cachedSortKeyPosition="4"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FL_DATE]"
-                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[FL_DATE]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DEP_DELAY]"
                       cachedDataType="i4"
                       cachedName="DEP_DELAY"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEP_DELAY]"
-                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DEP_DELAY]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ARR_DELAY]"
                       cachedDataType="i4"
                       cachedName="ARR_DELAY"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ARR_DELAY]"
-                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ARR_DELAY]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DISTANCE]"
                       cachedDataType="i4"
                       cachedName="DISTANCE"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DISTANCE]"
-                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DISTANCE]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DISTANCE]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of AIRLINE_CODE]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of AIRLINE_CODE"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AIRLINE_CODE]"
-                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of AIRLINE_CODE]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of AIRLINE_CODE]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of FL_NUMBER]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of FL_NUMBER"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FL_NUMBER]"
-                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FL_NUMBER]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of FL_NUMBER]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ORIGIN]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of ORIGIN"
+                      cachedSortKeyPosition="2"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ORIGIN]"
-                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ORIGIN]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of ORIGIN]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of DEST]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of DEST"
+                      cachedSortKeyPosition="3"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEST]"
-                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DEST]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of DEST]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of CANCELLATION_CODE]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of CANCELLATION_CODE"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CANCELLATION_CODE]"
-                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CANCELLATION_CODE]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of CANCELLATION_CODE]" />
                     <inputColumn
                       refId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of STATUS_CODE]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of STATUS_CODE"
                       externalMetadataColumnId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STATUS_CODE]"
-                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STATUS_CODE]" />
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of STATUS_CODE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2894,11 +2898,1147 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Extract Flight Data\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extract Flight Data\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[FL_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="FL_DATE"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[AIRLINE_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AIRLINE_CODE"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[AIRLINE_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[FL_NUMBER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FL_NUMBER"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[FL_NUMBER]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[ORIGIN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ORIGIN"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DEST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DEST"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DEST]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[CRS_DEP_TIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CRS_DEP_TIME"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CRS_DEP_TIME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DEP_TIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DEP_TIME"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_TIME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DEP_DELAY]"
+                      cachedDataType="i4"
+                      cachedName="DEP_DELAY"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[TAXI_OUT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TAXI_OUT"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[TAXI_OUT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[WHEELS_OFF]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="WHEELS_OFF"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[WHEELS_OFF]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[WHEELS_ON]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="WHEELS_ON"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[WHEELS_ON]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[TAXI_IN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TAXI_IN"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[TAXI_IN]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[CRS_ARR_TIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CRS_ARR_TIME"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CRS_ARR_TIME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[ARR_TIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ARR_TIME"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_TIME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[ARR_DELAY]"
+                      cachedDataType="i4"
+                      cachedName="ARR_DELAY"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[CANCELLED]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CANCELLED"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[CANCELLATION_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CANCELLATION_CODE"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLATION_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DIVERTED]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DIVERTED"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DIVERTED]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[CRS_ELAPSED_TIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CRS_ELAPSED_TIME"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CRS_ELAPSED_TIME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[ELAPSED_TIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ELAPSED_TIME"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ELAPSED_TIME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[AIR_TIME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AIR_TIME"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[AIR_TIME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DISTANCE]"
+                      cachedDataType="i4"
+                      cachedName="DISTANCE"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DISTANCE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DELAY_DUE_CARRIER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DELAY_DUE_CARRIER"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_CARRIER]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DELAY_DUE_WEATHER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DELAY_DUE_WEATHER"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_WEATHER]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DELAY_DUE_NAS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DELAY_DUE_NAS"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_NAS]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DELAY_DUE_SECURITY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DELAY_DUE_SECURITY"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_SECURITY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[DELAY_DUE_LATE_AIRCRAFT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DELAY_DUE_LATE_AIRCRAFT"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_LATE_AIRCRAFT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[STATUS_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="STATUS_CODE"
+                      lineageId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[STATUS_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[Copy of DEST]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of DEST"
+                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DEST]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[Copy of CANCELLATION_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of CANCELLATION_CODE"
+                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CANCELLATION_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[Copy of STATUS_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of STATUS_CODE"
+                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STATUS_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[Copy of AIRLINE_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of AIRLINE_CODE"
+                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of AIRLINE_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[Copy of FL_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of FL_NUMBER"
+                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FL_NUMBER]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract Flight Data\Sort.Inputs[Sort Input].Columns[Copy of ORIGIN]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of ORIGIN"
+                      lineageId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ORIGIN]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Flight Data\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[FL_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[FL_DATE]"
+                      name="FL_DATE"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[FL_DATE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[AIRLINE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[AIRLINE_CODE]"
+                      name="AIRLINE_CODE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[AIRLINE_CODE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[FL_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[FL_NUMBER]"
+                      name="FL_NUMBER">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[FL_NUMBER]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ORIGIN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ORIGIN]"
+                      name="ORIGIN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ORIGIN]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DEST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DEST]"
+                      name="DEST">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DEST]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CRS_DEP_TIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CRS_DEP_TIME]"
+                      name="CRS_DEP_TIME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CRS_DEP_TIME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DEP_TIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DEP_TIME]"
+                      name="DEP_TIME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_TIME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DEP_DELAY]"
+                      dataType="i4"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DEP_DELAY]"
+                      name="DEP_DELAY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DEP_DELAY]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[TAXI_OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[TAXI_OUT]"
+                      name="TAXI_OUT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[TAXI_OUT]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[WHEELS_OFF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[WHEELS_OFF]"
+                      name="WHEELS_OFF">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[WHEELS_OFF]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[WHEELS_ON]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[WHEELS_ON]"
+                      name="WHEELS_ON">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[WHEELS_ON]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[TAXI_IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[TAXI_IN]"
+                      name="TAXI_IN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[TAXI_IN]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CRS_ARR_TIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CRS_ARR_TIME]"
+                      name="CRS_ARR_TIME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CRS_ARR_TIME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ARR_TIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ARR_TIME]"
+                      name="ARR_TIME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_TIME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ARR_DELAY]"
+                      dataType="i4"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ARR_DELAY]"
+                      name="ARR_DELAY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ARR_DELAY]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CANCELLED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CANCELLED]"
+                      name="CANCELLED">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLED]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CANCELLATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CANCELLATION_CODE]"
+                      name="CANCELLATION_CODE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CANCELLATION_CODE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DIVERTED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DIVERTED]"
+                      name="DIVERTED">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DIVERTED]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CRS_ELAPSED_TIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[CRS_ELAPSED_TIME]"
+                      name="CRS_ELAPSED_TIME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[CRS_ELAPSED_TIME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ELAPSED_TIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[ELAPSED_TIME]"
+                      name="ELAPSED_TIME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[ELAPSED_TIME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[AIR_TIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[AIR_TIME]"
+                      name="AIR_TIME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[AIR_TIME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DISTANCE]"
+                      dataType="i4"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DISTANCE]"
+                      name="DISTANCE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DISTANCE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_CARRIER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_CARRIER]"
+                      name="DELAY_DUE_CARRIER">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_CARRIER]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_WEATHER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_WEATHER]"
+                      name="DELAY_DUE_WEATHER">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_WEATHER]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_NAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_NAS]"
+                      name="DELAY_DUE_NAS">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_NAS]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_SECURITY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_SECURITY]"
+                      name="DELAY_DUE_SECURITY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_SECURITY]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_LATE_AIRCRAFT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[DELAY_DUE_LATE_AIRCRAFT]"
+                      name="DELAY_DUE_LATE_AIRCRAFT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[DELAY_DUE_LATE_AIRCRAFT]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[STATUS_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[STATUS_CODE]"
+                      name="STATUS_CODE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output].Columns[STATUS_CODE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of DEST]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of DEST]"
+                      name="Copy of DEST"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DEST]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of CANCELLATION_CODE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of CANCELLATION_CODE]"
+                      name="Copy of CANCELLATION_CODE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CANCELLATION_CODE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of STATUS_CODE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of STATUS_CODE]"
+                      name="Copy of STATUS_CODE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STATUS_CODE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of AIRLINE_CODE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of AIRLINE_CODE]"
+                      name="Copy of AIRLINE_CODE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of AIRLINE_CODE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of FL_NUMBER]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of FL_NUMBER]"
+                      name="Copy of FL_NUMBER"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FL_NUMBER]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of ORIGIN]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Flight Data\Sort.Outputs[Sort Output].Columns[Copy of ORIGIN]"
+                      name="Copy of ORIGIN"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ORIGIN]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\Extract Flight Data.Paths[Data Conversion Output]"
-              endId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Extract Flight Data\Sort.Inputs[Sort Input]"
               name="Data Conversion Output"
               startId="Package\Extract Flight Data\Data Conversion.Outputs[Data Conversion Output]" />
             <path
@@ -2906,6 +4046,11 @@
               endId="Package\Extract Flight Data\Data Conversion.Inputs[Data Conversion Input]"
               name="Flat File Source Output"
               startId="Package\Extract Flight Data\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Extract Flight Data.Paths[Sort Output]"
+              endId="Package\Extract Flight Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\Extract Flight Data\Sort.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -3967,7 +5112,7 @@
     design-time-name="Package\Extract Airlines">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171.2,41.6"
           Id="Package\Extract Airlines\OLE DB Destination"
@@ -3995,7 +5140,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4031,7 +5178,7 @@
     design-time-name="Package\Extract Airports">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,41.6"
           Id="Package\Extract Airports\OLE DB Source"
@@ -4059,7 +5206,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4128,7 +5277,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-15.55857421875,20.2390617623925,31.1171484375,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4152,7 +5301,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-15.55857421875,21.7390617400407,31.1171484375,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4180,7 +5329,7 @@
         <NodeLayout
           Size="171.2,41.6"
           Id="Package\Extract Flight Data\OLE DB Destination"
-          TopLeft="701.666656211019,317.499995268881" />
+          TopLeft="701.666656211019,416.499993793666" />
         <NodeLayout
           Size="151.2,41.6"
           Id="Package\Extract Flight Data\Flat File Source"
@@ -4209,31 +5358,59 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-30.26947265625,26.9117504514753,60.5389453125,11.2431640625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Extract Flight Data\Sort"
+          TopLeft="736.499989107251,285.499995827675" />
         <EdgeLayout
           Id="Package\Extract Flight Data.Paths[Data Conversion Output]"
-          TopLeft="786.799989494682,220.766663996875">
+          TopLeft="785.816655942798,220.766663996875">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,96.733331272006"
+              EndConnector="0,64.7333318307999"
               Start="0,0"
-              End="0,89.233331272006">
+              End="0,57.2333318307999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,89.233331272006" />
+                    End="0,57.2333318307999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-30.26947265625,22.9950838841499,60.5389453125,11.2431640625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Flight Data.Paths[Sort Output]"
+          TopLeft="786.283322659135,327.099995827675">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.399997965991"
+              Start="0,0"
+              End="0,81.899997965991">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.899997965991" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.26947265625,35.3284169517455,60.5389453125,11.2431640625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4257,7 +5434,7 @@
     design-time-name="Package\Extract Flight Status">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="151.2,41.6"
           Id="Package\Extract Flight Status\Flat File Source"
@@ -4289,7 +5466,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4311,7 +5490,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4367,7 +5548,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-18.20556640625,21.6487297087908,36.4111328125,9.6025390625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4391,7 +5572,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-18.20556640625,32.648729544878,36.4111328125,9.6025390625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
