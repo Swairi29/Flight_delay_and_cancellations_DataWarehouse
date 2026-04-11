@@ -16,3 +16,7 @@ All database-related scripts are available in the /sql folder.
 - Analytical queries for reporting
 
 These were developed using SQL Server Management Studio (SSMS).
+<img width="1373" height="778" alt="Screenshot 2026-04-11 181738" src="https://github.com/user-attachments/assets/6fd8fe79-68af-4c57-b29e-f6fb7eed7f71" />
+<img width="1382" height="784" alt="Screenshot 2026-04-11 181936" src="https://github.com/user-attachments/assets/e7f7c352-48fc-41b6-87ea-62898abc80a8" />
+<img width="1366" height="780" alt="Screenshot 2026-04-11 181903" src="https://github.com/user-attachments/assets/e4304a76-6bba-40f5-ae25-f34eb9c78d22" />
+
